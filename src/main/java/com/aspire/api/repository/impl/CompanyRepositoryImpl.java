@@ -8,6 +8,8 @@ import com.aspire.api.model.CompanyEmployee;
 import com.aspire.api.model.Designation;
 import com.aspire.api.repository.CompanyRepository;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -17,11 +19,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@AllArgsConstructor
+@NoArgsConstructor
 public class CompanyRepositoryImpl implements CompanyRepository {
 
     private MongoTemplate mongoTemplate;
 
+    @Autowired
+    public CompanyRepositoryImpl(MongoTemplate mongoTemplate){
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @Override
     public boolean checkIfManagerForDepartmentExist(String department) {
