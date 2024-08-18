@@ -162,18 +162,17 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public String deleteEmployee(Integer id) {
         EmployeePost employee = companyRepository.findEmployeeById(id);
-        if(employee!=null){
-            if(employee.isManager()){
-                if(companyRepository.checkIfEmployeeUnderManagerExist(id)){
-                    throw new IllegalArgumentException("Cannot delete manager with employees");
-                }
+        if(employee.isManager()){
+            if(companyRepository.checkIfEmployeeUnderManagerExist(id)){
+                throw new IllegalArgumentException("Cannot delete manager with employees");
             }
-            CompanyEmployee companyEmployee = companyMapper.toCompanyEmployee(employee);
-            companyEmployee.setId(id);
-            companyRepository.deleteEmployee(companyEmployee);
-            return employee.getName();
         }
-        throw new IllegalArgumentException("Employee with given id doesn't exist");
+        CompanyEmployee companyEmployee = companyMapper.toCompanyEmployee(employee);
+        companyEmployee.setId(id);
+        companyRepository.deleteEmployee(companyEmployee);
+        return employee.getName();
     }
+
+
 
 }

@@ -19,4 +19,5 @@ public interface CompanyRepository {
     public List<Employee> findEmployeeUnderManagerById(Integer managerId);
     public List<EmployeeGet> findAllManagers();
     public List<Employee> findAllEmployees();
+    public CompanyEmployee findById(Integer id);
 }

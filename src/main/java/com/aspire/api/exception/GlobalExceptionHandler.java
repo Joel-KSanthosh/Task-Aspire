@@ -2,6 +2,7 @@ package com.aspire.api.exception;
 
 import com.aspire.api.dto.CustomResponse;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -61,6 +62,12 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public CustomResponse handleMissingServletRequestParameterException(MissingServletRequestParameterException ex){
         return new CustomResponse(ex.getParameterName()+" is required");
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public CustomResponse handleDataIntegrityViolationException(DataIntegrityViolationException ex){
+        return new CustomResponse("Email or mobile already exists");
     }
 
     @ExceptionHandler(Exception.class)

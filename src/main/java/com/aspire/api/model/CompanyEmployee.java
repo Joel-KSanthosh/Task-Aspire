@@ -2,22 +2,24 @@ package com.aspire.api.model;
 
 import java.util.Date;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.domain.Persistable;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "employee")
+@AllArgsConstructor
+@Entity
+@Table(name = "employee")
+@EntityListeners(AuditingEntityListener.class)
 public class CompanyEmployee implements Persistable<Integer>{
+
 
     private String name;
 
@@ -27,16 +29,17 @@ public class CompanyEmployee implements Persistable<Integer>{
     private String designation;
     private String department;
 
-    @Indexed(unique = true, background = true)
+    @Column(unique = true)
     private String email;
 
-    @Indexed(unique = true, background = true)
+    @Column(unique = true)
     private String mobile;
 
     private String location;
     private Date dateOfJoining;
 
     @CreatedDate
+    @Column(updatable = false)
     private Date createdTime;
 
     @LastModifiedDate
