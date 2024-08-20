@@ -3422,3 +3422,17 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '9
 2024-08-18T16:37:31.585+05:30 DEBUG 28092 --- [api] [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.aspire.api.dto.CustomResponse@73a5ad01]
 2024-08-18T16:37:31.586+05:30 DEBUG 28092 --- [api] [http-nio-8080-exec-8] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
 2024-08-18T16:37:31.586+05:30 DEBUG 28092 --- [api] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-18T16:40:41.514+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2024-08-18T16:40:41.515+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5b420e60, started on Sun Aug 18 16:34:35 IST 2024
+2024-08-18T16:40:41.519+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
+2024-08-18T16:40:41.521+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'applicationTaskExecutor' completed its stop procedure
+2024-08-18T16:40:41.521+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147482623
+2024-08-18T16:40:41.523+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'webServerGracefulShutdown' completed its stop procedure
+2024-08-18T16:40:41.523+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147481599
+2024-08-18T16:40:42.454+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'webServerStartStop' completed its stop procedure
+2024-08-18T16:40:42.454+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase -2147483647
+2024-08-18T16:40:42.454+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'springBootLoggingLifecycle' completed its stop procedure
+2024-08-18T16:40:42.456+05:30 DEBUG 28092 --- [api] [SpringApplicationShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2024-08-18T16:40:42.458+05:30  INFO 28092 --- [api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-18T16:40:42.466+05:30  INFO 28092 --- [api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-18T16:40:42.490+05:30  INFO 28092 --- [api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
