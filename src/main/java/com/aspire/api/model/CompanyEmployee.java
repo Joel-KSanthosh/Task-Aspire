@@ -1,23 +1,26 @@
 package com.aspire.api.model;
 
+import java.time.Instant;
 import java.util.Date;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.domain.Persistable;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.elasticsearch.annotations.DateFormat;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "employee")
-@EntityListeners(AuditingEntityListener.class)
+@Document(indexName = "employee")
 public class CompanyEmployee implements Persistable<Integer>{
 
 
@@ -29,21 +32,23 @@ public class CompanyEmployee implements Persistable<Integer>{
     private String designation;
     private String department;
 
-    @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
     private String mobile;
 
     private String location;
-    private Date dateOfJoining;
+
+    @NotEmpty(message = "Enter joining date")
+    @Field(type = FieldType.Date, format = DateFormat.date_time)
+    private Instant dateOfJoining;
 
     @CreatedDate
-    @Column(updatable = false)
-    private Date createdTime;
+    @Field(type = FieldType.Date, format = DateFormat.date_time)
+    private Instant createdTime;
 
     @LastModifiedDate
-    private Date updatedTime;
+    @Field(type = FieldType.Date, format = DateFormat.date_time)
+    private Instant updatedTime;
 
     private Integer managerId;
 

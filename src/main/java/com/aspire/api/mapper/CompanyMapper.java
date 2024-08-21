@@ -1,6 +1,7 @@
 package com.aspire.api.mapper;
 
 import com.aspire.api.dto.Employee;
+import com.aspire.api.dto.EmployeeGet;
 import com.aspire.api.dto.EmployeePost;
 import com.aspire.api.model.CompanyEmployee;
 import org.modelmapper.ModelMapper;
@@ -19,6 +20,10 @@ public class CompanyMapper {
 
     public Employee toEmployeeDTO(CompanyEmployee companyEmployee){
         return modelMapper.map(companyEmployee, Employee.class);
+    }
+
+    public EmployeeGet toEmployeeGet(CompanyEmployee companyEmployee){
+        return modelMapper.map(companyEmployee, EmployeeGet.class);
     }
 
 }

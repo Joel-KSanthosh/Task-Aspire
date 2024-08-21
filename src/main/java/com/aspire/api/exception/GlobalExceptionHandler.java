@@ -2,8 +2,11 @@ package com.aspire.api.exception;
 
 import com.aspire.api.dto.CustomResponse;
 
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.data.elasticsearch.UncategorizedElasticsearchException;
+import org.springframework.data.elasticsearch.core.convert.ConversionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -69,6 +72,18 @@ public class GlobalExceptionHandler {
     public CustomResponse handleDataIntegrityViolationException(DataIntegrityViolationException ex){
         return new CustomResponse("Email or mobile already exists");
     }
+
+    @ExceptionHandler(UncategorizedElasticsearchException.class)
+    public CustomResponse handleUncategorizedElasticsearchException(UncategorizedElasticsearchException ex){
+        return new CustomResponse(ex.getMessage()+ex.getResponseBody());
+    }
+
+    @ExceptionHandler(ConversionFailedException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public CustomResponse handleConversionFailedException(UncategorizedElasticsearchException ex){
+        return new CustomResponse(ex.getMessage()+ex.getResponseBody());
+    }
+
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

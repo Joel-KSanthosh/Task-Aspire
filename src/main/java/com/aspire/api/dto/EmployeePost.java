@@ -11,6 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.Instant;
 import java.util.Date;
 
 @Data
@@ -38,7 +39,7 @@ public class EmployeePost {
     private Integer managerId;
 
     @NotNull(message = "Enter a valid date")
-    private Date dateOfJoining;
+    private Instant dateOfJoining;
 
     @JsonIgnore
     public boolean isManager(){

@@ -40,7 +40,7 @@ public class CompanyServiceImpl implements CompanyService {
                     LocalDate currentTime = LocalDate.now();
                     for (Employee employee : employees) {
                         if (otherService.calculateDifferenceInYears(employee.getDateOfJoining()
-                                        .toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                                        .atZone(ZoneId.systemDefault()).toLocalDate(),
                                 currentTime
                         ) >= experience) {
                             experiencedEmployees.add(employee);
@@ -59,7 +59,7 @@ public class CompanyServiceImpl implements CompanyService {
                 LocalDate currentTime = LocalDate.now();
                 for (Employee employee : employees) {
                     if (otherService.calculateDifferenceInYears(employee.getDateOfJoining()
-                                    .toInstant().atZone(ZoneId.systemDefault())
+                                    .atZone(ZoneId.systemDefault())
                             .toLocalDate(), currentTime) >= experience) {
                         experiencedEmployees.add(employee);
                     }
